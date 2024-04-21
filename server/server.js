@@ -28,6 +28,28 @@ app.post("/api/v1/signup", async (req, res) => {
   }
 });
 
+// login api
+app.post("/api/v1/login", async (req, res) => {
+  try {
+    const results = await db.query(
+      "select * from userlogin where username=$1 and password=$2",
+      [req.body.username, req.body.password]
+    );
+    if (results.rows.length > 0) {
+      return res.status(200).json({
+        status: "success",
+      });
+    } else {
+      return res.status(401).json({
+        status: "error",
+        message: "Invalid username or password",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 // setting up server
 
 const port = process.env.port || 3002;

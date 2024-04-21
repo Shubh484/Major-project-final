@@ -78,6 +78,7 @@ const SignUp = () => {
               <div className="error-message">{errorMessage}</div>
             )}
           </form>
+          <a href="/login">Login</a>
         </div>
       </div>
     </>
