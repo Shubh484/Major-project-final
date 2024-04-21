@@ -1,0 +1,59 @@
+.login-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input-field {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 120px;
+  padding-right: 50px;
+  border-radius: 20px;
+  outline: none;
+
+  color: gray;
+}
+
+.username,
+.password {
+  position: relative;
+  margin: 12px;
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 13px;
+  padding-left: 6px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.btn-content {
+  border-radius: 20px;
+  outline: none;
+  padding: 16px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: medium;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 500;
+  color: white;
+  background-color: #00b300;
+  z-index: 1;
+}
