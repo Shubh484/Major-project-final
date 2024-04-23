@@ -55,7 +55,7 @@ app.post("/api/v1/login", async (req, res) => {
 app.get("/api/v1/userdetail", async (req, res) => {
   try {
     const results = await db.query("select * from people");
-    console.log(results);
+
     res.status(200).json({
       status: "success",
       data: {

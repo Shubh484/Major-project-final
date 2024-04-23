@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Userdetailpage.css";
+import { DetailContext } from "../../context/DetailContext";
+import UserDetail from "../../apis/UserDetail";
 
 // icons
 import { MdContactEmergency } from "react-icons/md";
@@ -8,15 +10,29 @@ import { FaUser } from "react-icons/fa";
 import { MdOutlineWork } from "react-icons/md";
 import { MdConnectWithoutContact } from "react-icons/md";
 
-const UserDetailPage = () => {
+const UserDetailPage = (props) => {
+  const { details, setDetails } = useContext(DetailContext);
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const response = await UserDetail.get("/userdetail");
+        setDetails(response.data.data.people);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchdata();
+  }, []);
+
   const [searchText, setSearchText] = useState("");
   const [userInfo, setUserInfo] = useState(null);
 
   const handleSearch = () => {
-    // const user = people.find((user) =>
-    //   user.firstName.toLowerCase().includes(searchText.toLowerCase())
-    // );
-    // setUserInfo(user);
+    const user = details.find((user) =>
+      user.firstname.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setUserInfo(user);
   };
 
   return (
@@ -45,21 +61,21 @@ const UserDetailPage = () => {
                   <MdContactEmergency className="icons" />
                 </li>
                 <li className="first-item">Identification</li>
-                <li className="second-item">{userInfo.identity}</li>
+                <li className="second-item">{userInfo.id}</li>
               </ul>
               <ul className="info">
                 <li>
                   <FaUser className="icons" />
                 </li>
                 <li className="first-item">Name</li>
-                <li className="second-item">{userInfo.firstName}</li>
+                <li className="second-item">{userInfo.firstname}</li>
               </ul>
               <ul className="info">
                 <li>
                   <FaUser className="icons" />
                 </li>
                 <li className="first-item">Lastname</li>
-                <li className="second-item">{userInfo.lastName}</li>
+                <li className="second-item">{userInfo.lastname}</li>
               </ul>
               <ul className="info">
                 <li>
