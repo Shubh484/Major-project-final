@@ -50,6 +50,23 @@ app.post("/api/v1/login", async (req, res) => {
   }
 });
 
+// getting people information from the database
+
+app.get("/api/v1/userdetail", async (req, res) => {
+  try {
+    const results = await db.query("select * from people");
+    console.log(results);
+    res.status(200).json({
+      status: "success",
+      data: {
+        people: results.rows,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 // setting up server
 
 const port = process.env.port || 3002;
