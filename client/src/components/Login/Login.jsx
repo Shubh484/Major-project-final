@@ -43,7 +43,7 @@ const Login = () => {
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="username">
-              <span className="icon">
+              <span className="signupicon">
                 <FaUserAlt />
               </span>
               <input
@@ -56,7 +56,7 @@ const Login = () => {
               />
             </div>
             <div className="password">
-              <span className="icon">
+              <span className="signupicon">
                 <FaLock />
               </span>
               <input
