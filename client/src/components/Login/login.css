@@ -1,4 +1,4 @@
-/* .login-form-wrapper {
+.login-form-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@
   color: gray;
 }
 
-.username,
+.email,
 .password {
   position: relative;
   margin: 12px;
@@ -56,55 +56,4 @@
   color: white;
   background-color: #00b300;
   z-index: 1;
-} */
-
-/* new version */
-
-body {
-  background-image: url(C:\Users\hp\Desktop\Major-project-final\client\public\images\geofence-background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.multistep-form {
-  max-width: 400px;
-  padding: 20px;
-  margin: auto;
-  backdrop-filter: blur(8px);
-  margin-top: 10vh;
-  box-shadow: 0 0 10px 2px rgb(180, 180, 180);
-  border-radius: 10px;
-}
-.step {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.inputsignup {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-.span {
-  display: inline;
-}
-.buttonsignup {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 40%;
-}
-.next {
-  float: right;
-}
-.buttonsignup:hover {
-  background-color: #0056b3;
-}
-
-.h2signup {
-  margin-bottom: 10px;
 }

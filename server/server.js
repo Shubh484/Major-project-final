@@ -10,13 +10,43 @@ app.use(express.json());
 
 // signup api
 
+// app.post("/api/v1/signup", async (req, res) => {
+//   try {
+//     const results = await db.query(
+//       "INSERT INTO userlogin (username,password) values ($1,$2) returning *",
+//       [req.body.username, req.body.password]
+//     );
+
+//     res.status(200).json({
+//       status: "success",
+//       data: {
+//         details: results.rows[0],
+//       },
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+
+// sign up
+
 app.post("/api/v1/signup", async (req, res) => {
   try {
     const results = await db.query(
-      "INSERT INTO userlogin (username,password) values ($1,$2) returning *",
-      [req.body.username, req.body.password]
+      "INSERT INTO userinfo (firstname,lastname,phonenumber,email,housenumber,street,city,state,password,confirmpassword) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) returning *",
+      [
+        req.body.firstname,
+        req.body.lastname,
+        req.body.phonenumber,
+        req.body.email,
+        req.body.housenumber,
+        req.body.street,
+        req.body.city,
+        req.body.state,
+        req.body.password,
+        req.body.confirmpassword,
+      ]
     );
-
     res.status(200).json({
       status: "success",
       data: {
@@ -32,8 +62,8 @@ app.post("/api/v1/signup", async (req, res) => {
 app.post("/api/v1/login", async (req, res) => {
   try {
     const results = await db.query(
-      "select * from userlogin where username=$1 and password=$2",
-      [req.body.username, req.body.password]
+      "select * from userinfo where email=$1 and password=$2",
+      [req.body.email, req.body.password]
     );
     if (results.rows.length > 0) {
       return res.status(200).json({

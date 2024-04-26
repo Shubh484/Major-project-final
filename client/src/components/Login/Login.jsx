@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./login.css";
 
 // icons
 import { FaUserAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
       if (response.ok) {
         // Login successful, handle accordingly (e.g., redirect to dashboard)
@@ -42,17 +43,17 @@ const Login = () => {
         <div className="login">
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
-            <div className="username">
+            <div className="email">
               <span className="signupicon">
                 <FaUserAlt />
               </span>
               <input
                 className="input-field"
                 type="text"
-                id="username"
-                value={username}
-                placeholder="Enter Username"
-                onChange={(e) => setUsername(e.target.value)}
+                id="email"
+                value={email}
+                placeholder="Enter E-mail"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="password">
